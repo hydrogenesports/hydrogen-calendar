@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071426">
+  <meta name="description" content="Subscribe to HYDROGEN Esports' official calendar in Apple Calendar.">
+  <title>HYDROGEN · Apple Calendar</title>
+  <style>
+    :root {color-scheme:dark;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+    * {box-sizing:border-box}
+    body {margin:0;min-height:100svh;background:radial-gradient(ellipse at 50% 10%,#163f72 0,#071426 56%,#040b15 100%);color:#f1f6ff;display:grid;place-items:center;padding:24px}
+    main {width:min(100%,480px);padding:40px 28px;text-align:center;background:rgba(8,24,45,.85);border:1px solid #274361;border-radius:24px;box-shadow:0 24px 70px #0006}
+    .mark {font-size:50px;color:#6bcaff;font-weight:900;text-shadow:0 0 22px #117ace;line-height:1}
+    h1 {font-size:24px;letter-spacing:.12em;margin:18px 0 5px}
+    .subhead{font-size:11px;letter-spacing:.19em;color:#79add6;font-weight:700}
+    p {color:#b9cde0;line-height:1.6;font-size:15px;margin:24px 0}
+    a.primary{display:block;background:#2689ec;color:white;text-decoration:none;font-weight:750;border-radius:13px;padding:17px 20px;font-size:16px}
+    a.primary:hover{background:#3b9cf9}
+    .note{font-size:12px;color:#8daac4;line-height:1.5;margin-top:15px}
+    details{margin-top:28px;text-align:left;border-top:1px solid #30445a;padding-top:18px;color:#bdd2e4;font-size:13px}
+    summary{cursor:pointer;font-weight:650}
+    code{overflow-wrap:anywhere;font-size:11px;color:#96cff9}
+    button{margin-top:9px;color:#d4eafe;background:#1b3652;border:1px solid #3b5875;border-radius:8px;padding:10px 14px;cursor:pointer}
+    footer{margin-top:36px;font-size:10px;letter-spacing:.19em;color:#78a1c8}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark">H</div>
+    <h1>HYDROGEN</h1>
+    <div class="subhead">ESPORTS · OFFICIAL SCHEDULE</div>
+    <p>Follow our upcoming matches, tournaments and team activities in Apple Calendar.</p>
+    <a class="primary" href="webcal://calendar.google.com/calendar/ical/f21e64908c8f727764f420d01a49213b5050f761664d99d43f037c41268cf415%40group.calendar.google.com/public/basic.ics">Subscribe with Apple Calendar</a>
+    <div class="note">On iPhone, open this page in Safari if your in-app browser doesn't open Calendar. Subscribing keeps the schedule updated automatically as Apple refreshes it.</div>
+    <details>
+      <summary>Having trouble subscribing?</summary>
+      <p>In Apple's Calendar app: Calendars → Add Calendar → Add Subscription Calendar. Paste the URL below, then tap Find.</p>
+      <code id="feed">https://calendar.google.com/calendar/ical/f21e64908c8f727764f420d01a49213b5050f761664d99d43f037c41268cf415%40group.calendar.google.com/public/basic.ics</code><br>
+      <button type="button" id="copy">Copy subscription URL</button>
+    </details>
+    <footer>HYDROGEN · IGNITE THE IMPOSSIBLE</footer>
+  </main>
+  <script>
+    document.getElementById('copy').addEventListener('click', async () => {
+      const value = document.getElementById('feed').textContent;
+      try { await navigator.clipboard.writeText(value); document.getElementById('copy').textContent='Copied!'; }
+      catch { window.prompt('Copy this URL:', value); }
+    });
+  </script>
+</body>
+</html>
