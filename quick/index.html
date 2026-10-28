@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HYDROGEN · Apple Calendar</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #071426;
+      color: white;
+      font-family: system-ui, sans-serif;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    a {
+      display: inline-block;
+      background: #2583e5;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>HYDROGEN</h1>
+    <p>Opening your Apple Calendar subscription...</p>
+    <a id="subscribe"
+       href="webcal://calendar.google.com/calendar/ical/f21e64908c8f727764f420d01a49213b5050f761664d99d43f037c41268cf415%40group.calendar.google.com/public/basic.ics">
+      Subscribe with Apple Calendar
+    </a>
+    <p>If nothing happens, tap the button above.</p>
+  </main>
+
+  <script>
+    window.addEventListener("load", function () {
+      window.location.assign(
+        document.getElementById("subscribe").href
+      );
+    });
+  </script>
+</body>
+</html>
