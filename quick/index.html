@@ -3,124 +3,80 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071426">
+  <meta name="theme-color" content="#06101f">
   <title>HYDROGEN · Apple Calendar</title>
   <style>
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      background:#071426;
-      color:#f3f8ff;
-      font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      display:grid;
-      place-items:center;
-      padding:24px;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 30px 20px;
+      color: #f3f8ff;
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse 58% 48% at 50% 34%, rgba(19,104,190,.24), transparent 78%),
+        linear-gradient(155deg, #0b2443 0%, #07182d 48%, #02050c 100%);
     }
-    main{max-width:440px;text-align:center}
-    h1{
-      letter-spacing:.11em;
-      font-size:30px;
-      margin:0;
-      color:#69b9ff;
+    main { width: min(100%, 470px); text-align: center; }
+    .logo {
+      display: block;
+      width: min(100%, 380px);
+      height: auto;
+      margin: 0 auto 14px;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 0 19px rgba(0,158,255,.19));
     }
-    p{color:#b9cfe7}
-    a{
-      display:inline-block;
-      padding:14px 24px;
-      border-radius:11px;
-      background:#2583e5;
-      color:#fff;
-      text-decoration:none;
-      font-weight:700;
-      margin-top:12px;
+    .status { margin: 0 0 21px; color: #d2e5fa; font-size: 15px; }
+    .subscribe {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 12px;
+      background: linear-gradient(125deg, #1675de, #309af7);
+      box-shadow: 0 8px 28px rgba(16,125,232,.22);
+      color: #fff;
+      font-weight: 750;
+      text-decoration: none;
+      transition: filter .2s ease, transform .2s ease;
     }
-    small{
-      display:block;
-      margin-top:24px;
-      color:#8cabcc;
+    .subscribe:hover { filter: brightness(1.12); transform: translateY(-1px); }
+    .help {
+      margin-top: 22px;
+      padding: 16px;
+      border: 1px solid rgba(93,171,245,.24);
+      border-radius: 13px;
+      background: rgba(25,77,130,.13);
     }
-    .help{
-      margin-top:27px;
-      padding:16px 18px;
-      border:1px solid rgba(105,185,255,.22);
-      border-radius:14px;
-      background:linear-gradient(
-        135deg,
-        rgba(37,131,229,.13),
-        rgba(37,131,229,.035)
-      );
-      box-shadow:0 8px 30px rgba(0,0,0,.1);
+    .help-title {
+      margin: 0 0 5px;
+      color: #8dccff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
     }
-    .help-title{
-      font-size:13px;
-      letter-spacing:.06em;
-      color:#b8daf7;
-      font-weight:750;
-      text-transform:uppercase;
-      margin:0 0 5px;
-    }
-    .help-copy{
-      font-size:14px;
-      color:#9bb8d7;
-      margin:0;
-    }
-    .help-link{
-      display:inline;
-      padding:0;
-      margin:0;
-      background:none;
-      color:#69b9ff;
-      border-radius:0;
-      font-weight:700;
-      text-decoration:underline;
-      text-underline-offset:3px;
-    }
-    .help-link:hover{color:#a5d9ff}
-    .footer{
-      display:block;
-      margin-top:26px;
-      color:#8cabcc;
-      font-size:11px;
-      letter-spacing:.13em;
-    }
+    .help-copy { margin: 0; color: #afc7df; font-size: 14px; }
+    .help-link { color: #75c4ff; font-weight: 750; text-underline-offset: 3px; }
+    .footer { margin-top: 28px; color: #7ca4cc; font-size: 11px; letter-spacing: .13em; }
+    @media (max-width: 420px) { .logo { width: 100%; } }
   </style>
 </head>
 <body>
-<main>
-  <h1>HYDROGEN</h1>
-
-  <p>Opening your Apple Calendar subscription…</p>
-
-  <a id="subscribe"
-     href="webcal://calendar.google.com/calendar/ical/f21e64908c8f727764f420d01a49213b5050f761664d99d43f037c41268cf415%40group.calendar.google.com/public/basic.ics">
-    Subscribe with Apple Calendar
-  </a>
-
-  <div class="help">
-    <p class="help-title">✦ Need a hand?</p>
-    <p class="help-copy">
-      Calendar didn't open?
-      <a class="help-link" id="fallback"
-         href="webcal://calendar.google.com/calendar/ical/f21e64908c8f727764f420d01a49213b5050f761664d99d43f037c41268cf415%40group.calendar.google.com/public/basic.ics">
-        Tap here to subscribe
-      </a>.
-    </p>
-  </div>
-
-  <small class="footer">
-    HYDROGEN · IGNITE THE IMPOSSIBLE
-  </small>
-</main>
-
-<script>
-  // Automatically attempt to open Apple Calendar.
-  // If blocked, the manual subscription links remain available.
-  window.addEventListener('load', function () {
-    window.location.assign(
-      document.getElementById('subscribe').href
-    );
-  });
-</script>
+  <main>
+    <img class="logo" src="logo.png" alt="HYDROGEN Esports logo">
+    <p class="status">Opening your Apple Calendar subscription…</p>
+    <a class="subscribe" id="subscribe" href="webcal://calendar.google.com/calendar/ical/f21e64908c8f727764f420d01a49213b5050f761664d99d43f037c41268cf415%40group.calendar.google.com/public/basic.ics">Subscribe with Apple Calendar</a>
+    <section class="help">
+      <p class="help-title">✦ NEED A HAND?</p>
+      <p class="help-copy">Calendar didn't open? <a class="help-link" href="webcal://calendar.google.com/calendar/ical/f21e64908c8f727764f420d01a49213b5050f761664d99d43f037c41268cf415%40group.calendar.google.com/public/basic.ics">Tap here to subscribe</a>.</p>
+    </section>
+    <div class="footer">HYDROGEN · IGNITE THE IMPOSSIBLE</div>
+  </main>
+  <script>
+    window.addEventListener('load', function () {
+      window.location.assign(document.getElementById('subscribe').href);
+    });
+  </script>
 </body>
 </html>
