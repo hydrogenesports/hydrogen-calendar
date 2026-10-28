@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071426">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050e1e">
 <title>HYDROGEN · Apple Calendar</title>
 
 <style>
@@ -11,14 +11,29 @@
     box-sizing: border-box;
   }
 
+  /* Extend the dark background across the entire page */
+  html {
+    min-height: 100%;
+    background: #050e1e;
+  }
+
   body {
     margin: 0;
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
+
     display: grid;
     place-items: center;
-    padding: 28px 18px;
+
+    padding:
+      max(28px, env(safe-area-inset-top))
+      max(18px, env(safe-area-inset-right))
+      max(28px, env(safe-area-inset-bottom))
+      max(18px, env(safe-area-inset-left));
+
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     color: #eef8ff;
+
     background: radial-gradient(
       ellipse at 50% 33%,
       #154878 0%,
@@ -26,6 +41,9 @@
       #050e1e 76%,
       #030815 100%
     );
+
+    background-attachment: fixed;
+    background-repeat: no-repeat;
   }
 
   main {
@@ -41,7 +59,7 @@
     display: block;
     margin: 0 auto 30px;
 
-    /* Visually remove the black image background */
+    /* Blend dark image pixels into the background */
     mix-blend-mode: screen;
 
     /* Soft blue glow */
@@ -55,11 +73,13 @@
     padding: 22px 20px;
     border: 1px solid rgba(94, 174, 247, .30);
     border-radius: 18px;
+
     background: linear-gradient(
       135deg,
       rgba(26, 82, 132, .36),
       rgba(5, 25, 50, .65)
     );
+
     box-shadow: 0 12px 45px rgba(0, 0, 0, .20);
   }
 
@@ -77,18 +97,22 @@
     color: #bed5ed;
   }
 
-  /* Main subscription button */
+  /* Subscription button */
   .subscribe {
     display: block;
     width: 100%;
     padding: 14px 15px;
+
     background: #2583e5;
     border-radius: 12px;
+
     color: white;
     font-size: 15px;
     font-weight: 750;
     text-decoration: none;
+
     box-shadow: 0 5px 20px rgba(37, 131, 229, .2);
+
     transition:
       background .2s ease,
       transform .2s ease,
@@ -152,7 +176,7 @@
 
 <script>
   // Automatically open Apple Calendar.
-  // The manual button remains available as a fallback.
+  // Keep the manual button as a fallback.
 
   window.addEventListener('load', () => {
     window.location.assign(
